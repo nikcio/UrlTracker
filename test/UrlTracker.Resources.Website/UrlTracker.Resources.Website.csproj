@@ -17,7 +17,7 @@
     <PackageReference Include="Bogus" Version="35.5.0" />
     <PackageReference Include="Clean" Version="4.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-    <PackageReference Include="Umbraco.Cms" Version="13.1.1" />
+    <PackageReference Include="Umbraco.Cms" Version="13.2.2" />
   </ItemGroup>
 
   <Import Project="..\..\src\UrlTracker.Backoffice.UI\build\UrlTracker.Backoffice.UI.targets" />
