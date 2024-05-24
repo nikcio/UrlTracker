@@ -10,8 +10,6 @@ using UrlTracker.Core.Caching.Memory.Notifications;
 using UrlTracker.Core.Caching.Memory.Options;
 using UrlTracker.Core.Database;
 using UrlTracker.Core.Database.Entities;
-using UrlTracker.Core.Database.Models;
-using UrlTracker.Core.Database.Models.Entities;
 
 namespace UrlTracker.Core.Caching.Memory.Database
 {
@@ -55,6 +53,11 @@ namespace UrlTracker.Core.Caching.Memory.Database
             DeleteFromCache(entity.Id);
         }
 
+        public void DeleteBulk(int[] ids)
+        {
+            _decoratee.DeleteBulk(ids);
+        }
+
         /// <inheritdoc/>
         public bool Exists(int id)
         {
@@ -74,17 +77,17 @@ namespace UrlTracker.Core.Caching.Memory.Database
         }
 
         /// <inheritdoc/>
-        public Task<IReadOnlyCollection<IRedirect>> GetAsync(IEnumerable<string> urlsAndPaths, int? rootNodeId = null, string? culture = null)
+        public Task<IReadOnlyCollection<IRedirect>> GetAsync(IEnumerable<string> urlsAndPaths)
         {
             return _options.Value.EnableActiveCache
-                ? Task.FromResult(_cacheAccessor.GetRedirect(urlsAndPaths, rootNodeId, culture))
-                : _decoratee.GetAsync(urlsAndPaths, rootNodeId, culture);
+                ? Task.FromResult(_cacheAccessor.GetRedirect(urlsAndPaths))
+                : _decoratee.GetAsync(urlsAndPaths);
         }
 
         /// <inheritdoc/>
-        public Task<RedirectEntityCollection> GetAsync(uint skip, uint take, string? query, OrderBy order, bool descending)
+        public Task<RedirectEntityCollection> GetAsync(uint skip, uint take, string? query, RedirectFilters filters, bool descending)
         {
-            return _decoratee.GetAsync(skip, take, query, order, descending);
+            return _decoratee.GetAsync(skip, take, query, filters, descending);
         }
 
         /// <inheritdoc/>

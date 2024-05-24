@@ -1,19 +1,34 @@
-﻿import { EntryService } from './Services/entry.service'
-import { ngEnterDirective, UrlTrackerOverviewController } from './Dashboards/overview.controller'
-import { UrlTrackerDetailsController } from './Panels/details.controller';
-import { UrlTrackerImportExportOverlayController } from './Overlays/importexport.controller';
-import { UrlResource } from './Services/url.resource';
+import "@oddbird/popover-polyfill";
+import "@umbraco-ui/uui";
+import "./dashboard";
+import {
+  ngAnalyseRecommendationSidebar,
+  ngInspectRecommendationsSidebar,
+  ngInspectRedirectSidebar,
+  ngSimpleRedirectSidebar,
+  ngUrltrackerDashboard,
+} from "./dashboard/directive";
+import "./dashboard/main.lit";
+import "./dashboard/notifications/notification.lit";
+import "./dashboard/tabs/advancedredirects.lit";
+import "./dashboard/tabs/landingpage.lit";
+import "./dashboard/tabs/recommendations.lit";
+import "./dashboard/tabs/recommendations/recommendationType";
+import "./dashboard/tabs/redirects.lit";
+import "./dashboard/tabs/redirects/source";
+import "./dashboard/tabs/redirects/target";
+
+import { TabBuilder } from "./util/tools/builder/tabBuilder";
+
+window.URL_TRACKER = {
+  TabBuilder: new TabBuilder(),
+};
 
 const module = angular.module("umbraco");
 
-// controllers
-module.controller("UrlTracker.OverviewController", UrlTrackerOverviewController);
-module.controller("UrlTracker.DetailsController", UrlTrackerDetailsController);
-module.controller("UrlTracker.ImportExportOverlayController", UrlTrackerImportExportOverlayController);
-
 // directives
-module.directive('ngEnter', ngEnterDirective);
-
-// services
-module.service("urlTrackerEntryService", EntryService);
-module.service("urlTrackerUrlResource", UrlResource);
+module.directive(ngUrltrackerDashboard.alias, ngUrltrackerDashboard);
+module.directive(ngSimpleRedirectSidebar.alias, ngSimpleRedirectSidebar);
+module.directive(ngInspectRedirectSidebar.alias, ngInspectRedirectSidebar);
+module.directive(ngInspectRecommendationsSidebar.alias, ngInspectRecommendationsSidebar);
+module.directive(ngAnalyseRecommendationSidebar.alias, ngAnalyseRecommendationSidebar);

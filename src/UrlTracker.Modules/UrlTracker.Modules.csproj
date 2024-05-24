@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>UrlTracker.Modules</PackageId>
     <Title>URL Tracker Module registration</Title>
@@ -9,4 +9,8 @@
 - Optimise SQL query performance
 - Optimise updates to the active cache</PackageReleaseNotes>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+  </ItemGroup>
 </Project>

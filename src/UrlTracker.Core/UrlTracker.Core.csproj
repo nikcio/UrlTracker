@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>UrlTracker.Core</PackageId>
     <Title>URL Tracker Core</Title>
@@ -14,5 +14,10 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UrlTracker.Modules\UrlTracker.Modules.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="UrlTracker.Core.Tests" />
+    <InternalsVisibleTo Include="UrlTracker.IntegrationTests" />
   </ItemGroup>
 </Project>
