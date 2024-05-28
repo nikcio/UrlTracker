@@ -11,7 +11,7 @@ namespace UrlTracker.IntegrationTests.Backoffice.Notification
     public class GetNotificationsTests
         : NotificationTestBase
     {
-        private const string _endpoint = _endpointBase + "/get";
+        private const string _endpoint = _endpointBase;
 
         [TestCase(TestName = "Get returns a list of notifications for a given alias")]
         public async Task Get_NormalFlow_ReturnsResult()
@@ -19,7 +19,7 @@ namespace UrlTracker.IntegrationTests.Backoffice.Notification
             // arrange
 
             // act
-            var response = await WebsiteFactory.CreateStandardClient().GetAsync(_endpoint + "?alias=" + UrlTracker.Backoffice.UI.Defaults.Extensions.Dashboard);
+            var response = await WebsiteFactory.CreateStandardClient().GetAsync(_endpoint + "/" + UrlTracker.Backoffice.UI.Defaults.Extensions.Dashboard);
 
             // assert
             Assert.That(response.IsSuccessStatusCode, Is.True);
