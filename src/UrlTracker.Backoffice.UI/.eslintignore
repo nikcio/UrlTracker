@@ -1,7 +1,7 @@
 node_modules/
 wwwroot/
 .prettierrc.mjs
-.eslintrc.mjs
+.eslintrc.cjs
 env.d.ts
 obj/
 bin/

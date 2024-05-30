@@ -9,7 +9,7 @@ export default defineConfig({
       fileName: 'script',
       formats: ['iife'],
     },
-    outDir: '../../test/UrlTracker.Resources.Website/App_Plugins/UrlTracker',
+    outDir: 'wwwroot',
     sourcemap: true,
     rollupOptions: {
       external: ['@umbraco-ui/uui'],
